@@ -92,7 +92,9 @@ defmodule JequalSON.Comporator do
       or {:failure, "expected #{inspect value} to be nil"}
   end
 
-  def compare_value(_, expectation) when is_atom(expectation) do
+  def compare_value(_, expectation)
+    when is_atom(expectation) and not is_boolean(expectation)
+  do
     {:failure, "unknown type #{inspect expectation}"}
   end
 

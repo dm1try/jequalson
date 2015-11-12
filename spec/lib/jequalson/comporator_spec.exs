@@ -59,6 +59,15 @@ defmodule JequalSON.ComporatorSpec do
         end
       end
 
+      context "match boolean values" do
+        let :json, do: %{ "test" => true }
+        let :schema, do: %{ test: true }
+
+        it do: expect(
+          Comporator.compare(json, schema)
+        ).to be_true
+      end
+
       context "simple match comparison" do
         let :json, do: %{"name" => "Jonh", "surname" => "Doe" }
 
