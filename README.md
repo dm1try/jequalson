@@ -1,7 +1,7 @@
 # JequalSON
 [![Build Status](https://travis-ci.org/dm1try/jequalson.svg)](https://travis-ci.org/dm1try/jequalson)
 ## Usage
-For example, lets check that a first user in twitter response matches a provide schema:
+For example, lets check that a first user in twitter response matches a provided schema:
 ```elixir
   # assume that you use Poison to parse responses
   response = Poison.Parser.parse!(twitter_response)
@@ -19,8 +19,8 @@ See specs for more examples.
 
 ## Path
 Path can include specific characters for collections:
- "*"" - means "all",
- "?" - means "any"
+ __*__ - means **all**,
+ __?__ - means **any**
 
 ```elixir
   # all statuses
