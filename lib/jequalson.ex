@@ -19,4 +19,14 @@ defmodule JequalSON do
       Comporator.compare(value, schema)
     end
   end
+
+  @spec match_count?(String.t, parsed_json, number) :: boolean
+  def match_count?(json, path, expected_count) do
+    Inspector.traverse path, json, fn(value)->
+      do_count(value, expected_count)
+    end
+  end
+
+  defp do_count(value, _) when not is_list(value), do: {:failure, "#{inspect value} is not an array"}
+  defp do_count(value, expected_count), do: Enum.count(value) == expected_count
 end

@@ -291,4 +291,24 @@ defmodule JequalSONSpec do
       ).to be_true
     end
   end
+
+  describe "match_count?/3" do
+    let :path, do: "statuses[0].user.entities.url.urls"
+    let :expected_count, do: 1
+
+    it do: expect(
+      JequalSON.match_count?(@parsed_json, path, expected_count)
+    ).to be_true
+
+    context "inspected path is not an array" do
+      let :path, do: "statuses[0].user"
+
+      it "returns a failure response" do
+        {status, message} = JequalSON.match_count?(@parsed_json, path, 0)
+
+        expect(status).to eq :failure
+        expect(message).to match "not an array"
+      end
+    end
+  end
 end
