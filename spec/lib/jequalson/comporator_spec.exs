@@ -50,6 +50,15 @@ defmodule JequalSON.ComporatorSpec do
         end
       end
 
+      context "match exact value" do
+        let :json, do: [1,2,3]
+        let :schema, do: [1,2,3]
+
+        it "returns a succesful result for an equal value" do
+          expect(Comporator.compare(json, schema)).to be_true
+        end
+      end
+
       context "simple match comparison" do
         let :json, do: %{"name" => "Jonh", "surname" => "Doe" }
 

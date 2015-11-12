@@ -102,7 +102,8 @@ defmodule JequalSON.Comporator do
   end
 
   def compare_value(value, expectation) do
-    {:failure, "do not able to compare #{inspect value} and #{inspect expectation}"}
+    value === expectation ||
+      {:failure, "expected #{inspect value} to eq #{inspect expectation}"}
   end
 
   defp normalized_schema(schema) do
