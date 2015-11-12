@@ -49,7 +49,7 @@ Matching can be done for a value ifself or for its type. Also you can define own
   1. Add JequalSON to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:jequalson, "~> 0.0.1"}]
+          [{:jequalson, "~> 0.1"}]
         end
 
 ## ESpec/ExUnit matchers

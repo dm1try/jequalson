@@ -3,20 +3,33 @@ defmodule JequalSON.Mixfile do
 
   def project do
     [app: :jequalson,
-     version: "0.0.1",
+     version: "0.1.0",
      elixir: "~> 1.1",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
+     description: description,
+     package: package,
      preferred_cli_env: [espec: :test],
      deps: deps]
   end
 
   def application do
-    [applications: [:logger]]
+    []
   end
 
   defp deps do
     [{:espec, "~> 0.8.5", only: :test},
      {:poison, "~> 1.5", only: :test}]
+  end
+
+  defp description do
+    """
+    Helpers for testing JSON responses.
+    """
+  end
+
+  defp package do
+    [files: ["lib", "mix.exs", "README*", "LICENSE*", "license*"],
+     maintainers: ["Dmitry Dedov"],
+     licenses: ["MIT"],
+     links: %{"GitHub" => "https://github.com/dm1try/jequalson"}]
   end
 end
