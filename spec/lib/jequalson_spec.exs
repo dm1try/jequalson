@@ -282,7 +282,7 @@ defmodule JequalSONSpec do
         retweet_count: 0,
         favorited: :boolean,
         metadata: %{
-          iso_language_code: "en"
+          iso_language_code: fn(v)-> String.length(v) == 2 end
         },
       }
 

@@ -62,11 +62,21 @@ defmodule JequalSON.Inspector do
   end
 
   defp collection_result(:all, array, result_callback) do
-    Enum.all?(array, result_callback)
+    Enumerable.reduce(array, {:cont, true}, fn(item, _) ->
+      case result_callback.(item) do
+        true -> {:cont, true}
+        failure -> {:halt, failure}
+      end
+    end) |> elem(1)
   end
 
   defp collection_result(:any, array, result_callback) do
-    Enum.any?(array, result_callback)
+    Enumerable.reduce(array, {:cont, {:failure, "no any success"}}, fn(item, _) ->
+      case result_callback.(item) do
+        true -> {:halt, true}
+        failure-> {:cont, failure}
+      end
+    end) |> elem(1)
   end
 
   defp collection_result(index, array, result_callback)

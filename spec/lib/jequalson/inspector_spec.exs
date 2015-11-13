@@ -106,6 +106,38 @@ defmodule JequalSON.InspectorSpec do
             end
           end
 
+          context "the callback returns failure/error responses" do
+            let :failure_callback, do: fn(value) ->
+              Agent.update(shared.traversed_values, fn(list)->
+                list ++ [value]
+              end)
+
+              if value == 5, do: true, else: {:failure, "no any 5 here"}
+            end
+
+            context "? - any item" do
+              let :path, do: "array[?]"
+
+              it "traversing all values and returns last callback response" do
+                result = Inspector.traverse(path, parsed_json, failure_callback)
+
+                expect(traversed_values).to eq [1, 2, 3]
+                expect(result).to eq {:failure, "no any 5 here"}
+              end
+            end
+
+            context "* - all items" do
+              let :path, do: "array[*]"
+
+              it "traversing first item and return last callback response" do
+                result = Inspector.traverse(path, parsed_json, failure_callback)
+
+                expect(traversed_values).to eq [1]
+                expect(result).to eq {:failure, "no any 5 here"}
+              end
+            end
+          end
+
           context "collection with nested objests" do
             let :path, do: "array_of_objects[*].name"
             let :callback, do: fn(value) ->
