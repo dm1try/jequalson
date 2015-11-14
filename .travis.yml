@@ -5,4 +5,4 @@ otp_release:
   - 18.0
 sudo: false
 script:
-  - mix espec
+  - mix espec --cover
