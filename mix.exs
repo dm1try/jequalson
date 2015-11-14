@@ -8,6 +8,7 @@ defmodule JequalSON.Mixfile do
      description: description,
      package: package,
      preferred_cli_env: [espec: :test],
+     test_coverage: [tool: Coverex.Task, coveralls: true],
      deps: deps]
   end
 
@@ -17,8 +18,9 @@ defmodule JequalSON.Mixfile do
 
   defp deps do
     [{:espec, "~> 0.8.5", only: :test},
-     {:poison, "~> 1.5", only: :test}]
-  end
+     {:poison, "~> 1.5", only: :test},
+     {:coverex, "~> 1.4.7", only: :test}]
+end
 
   defp description do
     """

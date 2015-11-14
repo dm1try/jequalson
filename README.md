@@ -1,5 +1,6 @@
 # JequalSON
 [![Build Status](https://travis-ci.org/dm1try/jequalson.svg)](https://travis-ci.org/dm1try/jequalson)
+[![Coverage Status](https://coveralls.io/repos/dm1try/jequalson/badge.svg?branch=master&service=github)](https://coveralls.io/github/dm1try/jequalson?branch=master)
 ## Usage
 For example, lets check that a first user in twitter response matches a provided schema:
 ```elixir
