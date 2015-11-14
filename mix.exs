@@ -8,7 +8,7 @@ defmodule JequalSON.Mixfile do
      description: description,
      package: package,
      preferred_cli_env: [espec: :test],
-     test_coverage: [tool: Coverex.Task, coveralls: true],
+     test_coverage: [tool: Coverex.Task, coveralls: true, log: :debug],
      deps: deps]
   end
 
