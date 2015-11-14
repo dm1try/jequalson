@@ -137,6 +137,28 @@ defmodule JequalSON.ComporatorSpec do
             Comporator.compare(json, schema)
           ).to be_true
         end
+
+        context "all JSON types" do
+          let :json, do: %{
+            "string" => "string",
+            "integer" => 0,
+            "number" => 1.0,
+            "object" => %{ "oject" => "name"},
+            "array" => [1,2,3],
+            "null" => nil
+          }
+          let :schema, do: %{
+            string:  :string,
+            integer: :integer,
+            number:  :number,
+            object:  :object,
+            array:   :array,
+            null:    :null
+          }
+          it do: expect(
+            Comporator.compare(json, schema)
+          ).to be_true
+        end
       end
     end
   end

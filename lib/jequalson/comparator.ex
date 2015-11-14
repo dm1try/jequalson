@@ -72,6 +72,11 @@ defmodule JequalSON.Comporator do
       or {:failure, "expected #{inspect value} to be a 'Integer' type"}
   end
 
+  def compare_value(value, :number) do
+    is_number(value)
+      or {:failure, "expected #{inspect value} to be a 'Number' type"}
+  end
+
   def compare_value(value, :boolean) do
     is_boolean(value)
       or {:failure, "expected #{inspect value} to be a 'Boolean' type"}
@@ -87,9 +92,9 @@ defmodule JequalSON.Comporator do
       or {:failure, "expected #{inspect value} to be a 'Array' type"}
   end
 
-  def compare_value(value, :nil) do
+  def compare_value(value, :null) do
     is_nil(value)
-      or {:failure, "expected #{inspect value} to be nil"}
+      or {:failure, "expected #{inspect value} to be null"}
   end
 
   def compare_value(_, expectation)
