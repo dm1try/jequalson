@@ -4,7 +4,7 @@ defmodule JequalSON.Mixfile do
   def project do
     [app: :jequalson,
      version: "0.1.1",
-     elixir: "~> 1.1",
+     elixir: "~> 1.0",
      description: description,
      package: package,
      preferred_cli_env: [espec: :test],
